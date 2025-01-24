@@ -14,7 +14,7 @@ import time
 #         print(f"Could not run command: {e}")
 
 # Works fine whether folder exists or not
-def make_dir(folder_name: str) -> None:
+def make_directory(folder_name: str, folder_path: str) -> None:
     try:
         if (folder_name not in os.listdir()):
             os.makedirs(folder_name, exist_ok=True)
@@ -25,7 +25,7 @@ def make_dir(folder_name: str) -> None:
         print(f"Could not execute command: {e}")
 
 # Works well with empty as well as non-empty directories and whether folder exists or not
-def remove_dir(folder_name: str) -> None:
+def remove_directory(folder_name: str) -> None:
     try:
         if folder_name in os.listdir():
             os.rmdir(folder_name)
@@ -45,7 +45,7 @@ def remove_dir(folder_name: str) -> None:
         print(f"Could not remove folder: {e}")
 
 # Works fine whether directory exists or not
-def open_dir(folder_path: str) -> None:
+def open_directory(folder_path: str) -> None:
     try:
         os.startfile(folder_path)
         os.chdir(folder_path)
