@@ -1,3 +1,8 @@
 venv
 task.txt
 __pycache__
+.env
+upsert_tools.py
+testing_appopener.py
+test_deepseek.py
+prompts.py

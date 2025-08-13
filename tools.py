@@ -4,17 +4,19 @@ import os
 import shutil
 import pyautogui
 import time
+from AppOpener import open, close
+import webbrowser
 
-# def run_terminal_command(command: str):
-#     try:
-#         result = subprocess.run(command, shell=True, capture_output=True, text=True)
-#         # logging.info(f"Shell command ran successfully")
-#         return result.stdout
-#     except Exception as e:
-#         print(f"Could not run command: {e}")
+def run_terminal_command(command: str):
+    try:
+        result = subprocess.run(command, shell=True, capture_output=True, text=True)
+        # logging.info(f"Shell command ran successfully")
+        return result.stdout
+    except Exception as e:
+        print(f"Could not run command: {e}")
 
 # Works fine whether folder exists or not
-def make_directory(folder_name: str, folder_path: str) -> None:
+def create_directory(folder_name: str, folder_creation_path: str) -> None:
     try:
         if (folder_name not in os.listdir()):
             os.makedirs(folder_name, exist_ok=True)
@@ -131,6 +133,31 @@ def two_key_shortcuts(key1: str, key2: str) -> None:
         pyautogui.hotkey(key1.lower(), key2.lower())
     except Exception as e:
         print(f"Error while performing shortcut {key1} + {key2}: {e}")
+
+def list_available_apps() -> str:
+    try:
+        return open("ls")
+    except Exception as e:
+        return f"Error while retrieving available apps: {e}"
+    
+def open_app(app_name: str) -> None:
+    try:
+        open(app_name)
+    except Exception as e:
+        print(f"Error while opening '{app_name}': {e}")
+
+def close_app(app_name: str) -> None:
+    try:
+        close(app_name)
+    except Exception as e:
+        print(f"Error while closing '{app_name}': {e}")
+
+def open_url(url: str) -> None:
+    try:
+        # webbrowser.
+        webbrowser.open(url)
+    except Exception as e:
+        print(f"Error while opening {url}: {e}")
 
 if __name__ == "__main__":
     pass
